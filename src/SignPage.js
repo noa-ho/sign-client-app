@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import SignatureCanvas from 'react-signature-canvas';
 
-const API_BASE_URL = "https://sign-server-app.onrender.com";
-
 function SignPage() {
   const { fileId } = useParams();
   const [signerName, setSignerName] = useState('');
@@ -23,10 +21,11 @@ function SignPage() {
       return;
     }
 
+    // שימוש בפונקציה תקינה
     const signatureImage = sigCanvas.current.getCanvas().toDataURL('image/png');
 
     try {
-      const res = await fetch(`${API_BASE_URL}/sign/${fileId}`, {
+      const res = await fetch(`http://localhost:5000/sign/${fileId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ signerName, signatureImage }),
