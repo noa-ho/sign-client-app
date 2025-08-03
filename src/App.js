@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const API_BASE_URL = "https://sign-server-zbww.onrender.com";
+const API_BASE_URL = "https://sign-server-app.onrender.com";
 
 function App() {
   const [file, setFile] = useState(null);
