@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const API_BASE_URL = "https://sign-server-app-1.onrender.com";
+
 function App() {
   const [file, setFile] = useState(null);
   const [link, setLink] = useState('');
@@ -16,7 +18,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:5000/upload", {
+      const res = await fetch(`${API_BASE_URL}/upload`, {
         method: "POST",
         body: formData,
       });
